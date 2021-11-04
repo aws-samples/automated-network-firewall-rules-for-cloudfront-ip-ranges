@@ -6,6 +6,9 @@ To ensure that the only allowed traffic source is CloudFront IP ranges, we need 
 
 For that reason, this artifact focuses on creating automated network firewall rules utilizing the various AWS services such as Simple Notification Service, Parameter Store, and Lambda. 
 
+![image](https://user-images.githubusercontent.com/93626739/140253139-ab8bd894-4322-4567-ba53-f59086e5ae30.png)
+
+As shown in the diagram above, it is a relatively simple architecture which starts with an SNS topic managed by Amazon, feeding a JSON file that includes the updated IP ranges of all Amazon services to our Lambda Python function. Lambda function then parses this file and filters out the CloudFront IP ranges, and creates the rule group accordingly along with the destination IP ranges provided by the user (you). 
 
 
 ## Security
